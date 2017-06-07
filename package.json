@@ -2,22 +2,19 @@
   "name": "vuejs-github-explorer-blog",
   "version": "1.0.0",
   "description": "This is the repository for the code from the blog post \"Create a Github Explorer Using Vue.js.\"",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/searsaw/vuejs-github-explorer-blog.git"
-  },
-  "author": "Alex Sears",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/searsaw/vuejs-github-explorer-blog/issues"
-  },
-  "homepage": "https://github.com/searsaw/vuejs-github-explorer-blog#readme",
+  "author": "Thomas Truong",
   "dependencies": {
     "bootstrap": "^3.3.5",
     "vue": "^1.0.0",
     "vue-resource": "^0.1.16"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
     "browserify": "^11.2.0",
     "eslint": "^1.7.3",
     "font-awesome": "^4.4.0",

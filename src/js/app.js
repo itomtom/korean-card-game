@@ -1,28 +1,36 @@
 var Vue = require('vue');
 Vue.config.debug = true;
-Vue.use(require('vue-resource'));
+
+import CardService from './services/card-service.js'
 
 new Vue({
-    el: '#container',
-    data: {
-        fullRepoName: '',
-        username: '',
-        repo: ''
-    },
-    methods: {
-        changeRepo: function() {
-            var splitData = this.fullRepoName.split('/');
-            this.username = splitData[0];
-            this.repo = splitData[1];
-
-            console.group("Vue Data");
-            console.log("fullRepoName:", this.fullRepoName);
-            console.log("username:", this.username);
-            console.log("repo:", this.repo);
-            console.groupEnd("Vue Data");
-        }
-    },
-    components: {
-        githubFileExplorer: require('./components/github-file-explorer')
+  el: '.container',
+  data: {
+    cards: [],
+    index: 0,
+    finish: 0
+  },
+  components: {
+    koreanCard: require('./components/korean-card')
+  },
+  methods: {
+    incrementIndex: function() {
+      if(this.index === this.cards.length-1){
+        this.finish = 1;
+      } else {
+        this.index++;
+      }
     }
+  },
+  created: function() {
+    let service = new CardService();
+    service.getCards(
+      (response) => {
+        this.cards = response;
+      },
+      (response) => {
+        console.log(response);
+      }
+    );
+  }
 });

@@ -8,6 +8,8 @@ var browserify = require('browserify');
 var partialify = require('partialify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var babelify = require('babelify');
+var es2015 = require('babel-preset-es2015');
 
 gulp.task('html', function() {
     gulp.src('src/*.html')
@@ -44,6 +46,7 @@ gulp.task('js', function() {
         debug: true
     })
     .transform(partialify)
+    .transform(babelify)
     .bundle()
     .on('error', function (err) {
         console.log(err.toString());
