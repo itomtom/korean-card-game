@@ -21,6 +21,9 @@ export default class CardService {
             responses.forEach(
               (response) => cards.push(this.convertToObject(response.data.content))
             );
+            cards.sort(function() {
+              return 0.5 - Math.random() 
+            }).slice(0, 5);
             success(cards);
           },
           (response) => {
