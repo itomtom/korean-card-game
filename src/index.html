@@ -7,17 +7,26 @@
 </head>
 <body>
   <div class="container">
+    <span class="pull-right badge bg-danger" style="margin: 15px 15px 0px 0px; background-color: #337ab7">{{index + 1}}/5</span>
     <div class="jumbotron" style="text-align: center">
       <h1>
         <span class="label label-info">Korean Word</span>
       </h1>
       <korean-card v-if="!finish" v-bind:card="cards[index]" v-on:increment="incrementIndex"></korean-card>
 
-      <div v-if="finish" class="thumbnail">
+      <div v-if="finish && success===5" class="thumbnail">
         <img src="https://media.giphy.com/media/el7Pq0ProIa1q/giphy.gif">
         <div class="caption">
           <h3>Congratulations</h3>
           <p>You are now a Korean Pro</p>
+        </div>
+      </div>
+
+      <div v-if="finish && success!==5" class="thumbnail">
+        <img src="https://media.giphy.com/media/rfskmSvktqSoo/giphy.gif">
+        <div class="caption">
+          <h3>Apologies</h3>
+          <p>You need to practise more</p>
         </div>
       </div>
     </div>

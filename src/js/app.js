@@ -8,13 +8,18 @@ new Vue({
   data: {
     cards: [],
     index: 0,
-    finish: 0
+    finish: 0,
+    success: 0
   },
   components: {
     koreanCard: require('./components/korean-card')
   },
   methods: {
-    incrementIndex: function() {
+    incrementIndex: function(result) {
+      if(result){
+        this.success++;                
+      }
+
       if(this.index === this.cards.length-1){
         this.finish = 1;
       } else {

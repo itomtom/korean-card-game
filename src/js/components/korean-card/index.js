@@ -2,7 +2,7 @@ module.exports = {
   template: require('./template.html'),
   data: function() {
       return {
-          guess: null
+          guess: null,
       };
   },
   props: {
@@ -13,19 +13,22 @@ module.exports = {
   },
   methods: {
     next: function() {
-      this.$emit('increment');
+      this.$emit('increment', this.guess);
       this.guess = null;
-    }
+    },
   },
   computed: {
     display: function() {
-      return this.guess === null;
+      return this.guess !== null;
     },
     answers: function() {
       return (this.card) ? this.card.answers : null;
     },
     word: function() {
       return (this.card) ? 'What is ' + this.card.question + '?' : null;
-    }
+    },
+    result: function() {
+      return (this.guess) ? 'Correct' : 'Incorrect';
+    },
   }
 };

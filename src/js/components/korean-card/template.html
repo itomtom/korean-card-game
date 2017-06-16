@@ -1,14 +1,9 @@
 <p> {{ word }} </p>
 <p v-for="item in answers">
-  <button type="button" class="btn btn-primary btn-block" @click="guess = item.value">{{ item.answer }}</button>
+  <button type="button" class="btn btn-primary btn-block" v-on:click="guess = item.value" :disabled="display">{{ item.answer }}</button>
 </p>
-<div v-if="guess" class="alert alert-success">
-  <strong>Correct</strong>
-</div>
-<div v-if="!guess" v-show="!display" class="alert alert-danger">
-  <strong>Incorrect</strong>
-</div>
 
-<button v-if="guess" type="button" class="btn btn-success" v-on:click="next">
-  <span aria-hidden="true" class="glyphicon glyphicon-triangle-right"></span>Next    
+<button v-show="display" type="button" class="btn btn-lg" v-on:click="next(guess)" v-bind:class="[guess ? 'btn-success' : 'btn-danger']">
+  <strong>{{ result }}</strong>
+  <span aria-hidden="true" class="glyphicon glyphicon-triangle-right"></span>    
 </button>
