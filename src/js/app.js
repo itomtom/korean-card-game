@@ -25,6 +25,9 @@ new Vue({
       } else {
         this.index++;
       }
+    },
+    return: function() {
+      return window.location.href = /^\?url=(.+)$/.exec(window.location.search)[1] + '#/pass';
     }
   },
   created: function() {

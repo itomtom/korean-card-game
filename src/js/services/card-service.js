@@ -11,7 +11,9 @@ export default class CardService {
     Vue.http.get('https://api.github.com/repos/itomtom/korean-card/contents').then(
       (response) => {
         var promises = [];
-        response.data.slice(0, 5).forEach(
+        response.data.sort(function() {
+          return 0.5 - Math.random() ;
+        }).slice(0, 5).forEach(
           (card) => promises.push(Vue.http.get(card.git_url))
         );
 
@@ -21,9 +23,7 @@ export default class CardService {
             responses.forEach(
               (response) => cards.push(this.convertToObject(response.data.content))
             );
-            success(cards.sort(function() {
-              return 0.5 - Math.random() ;
-            }));
+            success(cards);
           },
           (response) => {
             error(response);
