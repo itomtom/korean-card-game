@@ -27,7 +27,11 @@ new Vue({
       }
     },
     return: function() {
-      return window.location.href = /^\?url=(.+)$/.exec(window.location.search)[1] + '#/pass';
+      let url = 'https://www.seamless.com/corporate/login/';
+      if(/^\?url=(.+)$/.test(url)) {
+        url = /^\?url=(.+)$/.exec(window.location.search)[1];
+      }
+      return window.location.href = url + '#/pass';
     }
   },
   created: function() {
